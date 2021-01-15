@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xlmns:th="http://www.thymeleaf.org/" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:xlmns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${pagetitle}"></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body class="container">
+<h1>Let's Add Songs</h1>
+
+<table class="table" style="max-width:300px">
+    <tr>
+        <th>Song Name</th>
+        <th>Artist</th>
+    </tr>
+
+    <tr th:each="song : ${songs}">
+        <td th:text="${song.name}"></td>
+        <td th:text="${song.artist}"></td>
+    </tr>
+</table>
+
+<form method="post" style="max-width:600px;position:fixed;top:250px">
+    <div class="form-group" >
+        <input class="form-control" type="text" method="post" name="name">
+
+        <input class="form-control" type="text" method="post" name="artist">
+
+        <input type="submit" value="Add Song" >
+    </div>
+</form>
+
+</body>
+</html>

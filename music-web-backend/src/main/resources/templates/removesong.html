@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xlmns:th="http://www.thymeleaf.org/" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:xlmns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${pagetitle}"></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body class="container">
+<h1>Let's Remove Songs</h1>
+
+<form method="post" style="max-width:600px;position:fixed;top:50px">
+    <div th:each="song : ${songs}" class="checkbox">
+        <input type="checkbox" name="songIds" th:value="${song.id}" th:id="${song.id}">
+        <label th:for="${song.id}" th:text="${song.name}"></label>
+    </div>
+    <input type="submit" value="Remove Song">
+</form>
+
+</body>
+</html>
