@@ -22,13 +22,12 @@ class DisplaySongs extends React.Component{
         return(
             <div>
                 {
-                    this.state.songs.map(
-                        song => 
+                    this.state.songs.map((song) => (
                         <tr>
                             <td>{song.name}</td>
                             <td>{song.artist}</td>
                         </tr>
-                        )
+                        ))
                 }
             </div>
         )

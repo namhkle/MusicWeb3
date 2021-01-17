@@ -5,6 +5,7 @@ import com.sun.istack.NotNull;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -20,6 +21,9 @@ public class Song {
     @NotNull
     @Size(min=1, max = 20)
     private String artist;
+
+    @ManyToOne
+    private Genre genre;
 
     public Song(){
 
