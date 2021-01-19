@@ -9,4 +9,7 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface GenreDAO extends CrudRepository<Genre, Integer> {
+    default Genre findOne(int id) {
+        return (Genre) findById(id).orElse(null);
+    }
 }

@@ -1,6 +1,7 @@
 package com.music.forum.Controllers;
 
 import com.music.forum.Models.Song;
+import com.music.forum.Models.Genre;
 import com.music.forum.Repositories.GenreDAO;
 import com.music.forum.Repositories.SongDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,7 @@ public class SongController {
     public String displaySongs(Model model){
         model.addAttribute("songs", songDAO.findAll());
         model.addAttribute("pagetitle","Add Songs");
+        model.addAttribute("genres", genreDAO.findAll());
         return "addsong";
     }
     @RequestMapping(value="removesong", method = RequestMethod.GET)
@@ -43,13 +45,15 @@ public class SongController {
         return "removesong";
     }
     @RequestMapping(value="addsong", method = RequestMethod.POST)
-    public String addSong(Model model, @ModelAttribute @Valid Song newSong, Errors errors){
+    public String addSong(Model model, @ModelAttribute @Valid Song newSong, @RequestParam int genreId, Errors errors){
         model.addAttribute("songs", songDAO.findAll());
+        model.addAttribute("genres", genreDAO.findAll());
        if(errors.hasErrors()){
            return "addsong";
        }
+        Genre gen = genreDAO.findOne(genreId);
+        newSong.setGenre(gen);
         songDAO.save(newSong);
-        System.out.println("Hello " + newSong);
         return "addsong";
     }
 

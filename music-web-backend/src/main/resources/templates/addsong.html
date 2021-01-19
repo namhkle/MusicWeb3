@@ -33,6 +33,15 @@
 
         <input type="submit" value="Add Song" >
     </div>
+
+    <div class="form-group">
+        <label th:for="genre">Genre</label>
+        <select name="genreId">
+            <option th:each="genre : ${genres}"
+                    th:text="${genre.name}"
+                    th:value="${genre.id}"></option>
+        </select>
+    </div>
 </form>
 
 </body>
