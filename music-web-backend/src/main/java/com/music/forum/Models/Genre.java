@@ -25,11 +25,11 @@ public class Genre {
         this.name = name;
     }
 
-    public int getIt() {
+    public int getId() {
         return id;
     }
 
-    public void setIt(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
