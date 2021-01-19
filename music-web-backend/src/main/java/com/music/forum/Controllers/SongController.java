@@ -1,6 +1,7 @@
 package com.music.forum.Controllers;
 
 import com.music.forum.Models.Song;
+import com.music.forum.Repositories.GenreDAO;
 import com.music.forum.Repositories.SongDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,9 @@ import java.util.List;
 public class SongController {
     @Autowired
     private SongDAO songDAO;
+
+    @Autowired
+    private GenreDAO genreDAO;
 
     @RequestMapping(value="")
     public String home(Model model){

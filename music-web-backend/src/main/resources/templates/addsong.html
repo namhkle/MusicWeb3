@@ -15,11 +15,13 @@
     <tr>
         <th>Song Name</th>
         <th>Artist</th>
+        <th>Genre</th>
     </tr>
 
     <tr th:each="song : ${songs}">
         <td th:text="${song.name}"></td>
         <td th:text="${song.artist}"></td>
+        <td th:text="${song.genre.name}"></td>
     </tr>
 </table>
 

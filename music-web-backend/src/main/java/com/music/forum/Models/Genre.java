@@ -9,7 +9,7 @@ import java.util.*;
 public class Genre {
     @Id
     @GeneratedValue
-    private int it;
+    private int id;
 
     @NotNull
     @Size(min = 1, max = 25)
@@ -26,11 +26,11 @@ public class Genre {
     }
 
     public int getIt() {
-        return it;
+        return id;
     }
 
-    public void setIt(int it) {
-        this.it = it;
+    public void setIt(int id) {
+        this.id = id;
     }
 
     public String getName() {
