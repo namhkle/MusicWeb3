@@ -1,7 +1,7 @@
 package com.music.forum.Controllers;
 
-import com.music.forum.Models.Song;
 import com.music.forum.Models.Genre;
+import com.music.forum.Models.Song;
 import com.music.forum.Repositories.GenreDAO;
 import com.music.forum.Repositories.SongDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +63,12 @@ public class SongController {
             songDAO.deleteById(songId);
         }
         return "removesong";
+    }
+
+    @RequestMapping(value="genre", method = RequestMethod.GET)
+    public String genre(Model model){
+        model.addAttribute("genres", genreDAO.findAll());
+        return "genre";
     }
 
     @RequestMapping(value="addsong")

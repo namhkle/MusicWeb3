@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xlmns:th="http://www.thymeleaf.org/" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:xlmns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${pageTitle}"></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div th:each="genre : ${genres}">
+    <form action="${genre.id}" method="POST">
+        <input type="hidden" name="param1" value="val" />
+        <a th:href="${genre.name}" onclick="this.parentNode.submit()" th:text="${genre.name}"></a>
+    </form>
+    </div>
+
+
+</body>
+</html>
