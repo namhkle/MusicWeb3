@@ -67,11 +67,12 @@ public class SongController {
 
     @RequestMapping(value="genre", method = RequestMethod.GET)
     public String genre(Model model){
+
         model.addAttribute("genres", genreDAO.findAll());
         return "genre";
     }
 
-    @RequestMapping(value="addsong")
+    @RequestMapping(value="songs")
     public List<Song> getSongs(){
         return (List<Song>) songDAO.findAll();
     }
