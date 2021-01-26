@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 
-function TextArea() {
+function TextArea(props) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
