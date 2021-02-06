@@ -20,12 +20,6 @@ public class SongController {
     @Autowired
     private GenreDAO genreDAO;
 
-    @RequestMapping(value="")
-    public String home(Model model){
-        model.addAttribute("songs", songDAO.findAll());
-        model.addAttribute("pagetitle","Home");
-        return "home";
-    }
     @RequestMapping(value="addsong", method = RequestMethod.GET)
     public String displaySongs(Model model){
         model.addAttribute("songs", songDAO.findAll());
