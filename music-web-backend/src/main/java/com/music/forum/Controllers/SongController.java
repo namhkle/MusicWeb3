@@ -10,7 +10,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
+import java.util.*;
 
 @RestController
 public class SongController {
@@ -69,4 +69,8 @@ public class SongController {
         return "genre";
     }
 
+    @RequestMapping("songss")
+    public List<Song> getSongs(){
+        return songDAO.findAll();
+    }
 }

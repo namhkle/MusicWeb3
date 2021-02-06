@@ -15,7 +15,7 @@ public class CorsConfig implements Filter {
     private final Logger log = LoggerFactory.getLogger(CorsConfig.class);
 
     public void SimpleCORSFilter() {
-        log.info("SimpleCORSFilter init");
+        log.info("CorsConfig init");
     }
 
     @Override

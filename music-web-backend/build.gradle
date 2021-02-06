@@ -20,28 +20,30 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    compile 'mysql:mysql-connector-java'
-    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
     runtime('com.oracle:ojdbc7:12.1.0.2.0')
-    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-web-services'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.data:spring-data-rest-hal-explorer'
     implementation 'org.springframework.session:spring-session-core'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-    compile group: 'org.hibernate', name: 'hibernate-validator-annotation-processor', version: '6.0.2.Final'
-    compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    compile group: 'org.hibernate', name: 'hibernate-validator', version: '6.0.13.Final'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
+    compileOnly 'org.projectlombok:lombok'
     compile group: 'com.zaxxer', name: 'HikariCP', version: '2.4.1'
-
+    compile 'mysql:mysql-connector-java'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
+    compile group: 'org.hibernate', name: 'hibernate-validator', version: '6.0.13.Final'
+    compile group: 'org.hibernate', name: 'hibernate-validator-annotation-processor', version: '6.0.2.Final'
+    compile group: 'org.webjars', name: 'webjars-locator-core', version: '0.46'
+    compile group: 'org.webjars.bower', name: 'jquery', version: '3.5.1'
+    compile group: 'org.webjars', name: 'bootstrap', version: '4.6.0'
 }
 
 bootRun {

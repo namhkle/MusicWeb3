@@ -12,7 +12,7 @@
     <div th:each="genre : ${genres}">
     <form method="POST">
         <a th:href="${genre.name}" onclick="this.parentNode.submit()" th:text="${genre.name}"></a>
-        <input type="hidden" name="id" th:value="${genre.id}" th:id="${genre.id}"/>
+        <input type="button" name="id" th:value="${genre.id}" th:id="${genre.id}"/>
     </form>
     </div>
 
