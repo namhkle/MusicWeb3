@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xlmns:th="http://www.thymeleaf.org/" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:xlmns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+</head>
+<body>
+
+<h1>User Profile</h1>
+<p1>Full Name: <b>[[${#request.userPrincipal.principal.fullName}]]</b></p1>
+
+
+<div><label for="audio-upload">Upload an audio file:</label></div>
+<div><input id="audio-upload" type="file" /></div>
+
+</body>
+</html>
+
+<script>
+
+    function changeHandler({target}) {
+        if (!target.files.length) return;
+
+        const urlObj = URL.createObjectURL(target.files[0]);
+
+        // Create an audio element
+        const audio = document.createElement("audio");
+
+        audio.addEventListener("load", () => {
+            URL.revokeObjectURL(urlObj);
+        });
+
+        document.body.appendChild(audio);
+
+        audio.controls = "true";
+
+        audio.src = urlObj;
+    }
+
+    document
+        .getElementById("audio-upload")
+        .addEventListener("change", changeHandler);
+
+</script>
