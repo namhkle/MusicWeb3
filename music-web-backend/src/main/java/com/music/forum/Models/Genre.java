@@ -6,10 +6,11 @@ import javax.validation.constraints.Size;
 import java.util.*;
 
 @Entity
+@Table(name = "genre")
 public class Genre {
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     @NotNull
     @Size(min = 1, max = 25)
@@ -25,11 +26,11 @@ public class Genre {
         this.name = name;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

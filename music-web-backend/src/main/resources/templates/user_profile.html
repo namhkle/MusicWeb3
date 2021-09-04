@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xlmns:th="http://www.thymeleaf.org/" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:xlmns="http://www.w3.org/1999/xhtml">
+<html lang="en" xlmns:th="http://www.thymeleaf.org/"
+      xmlns:xlmns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -9,8 +10,9 @@
 </head>
 <body>
 
-<h1>User Profile</h1>
-<p1>Full Name: <b>[[${#request.userPrincipal.principal.fullName}]]</b></p1>
+<h1>User Profile</h1><br>
+<p1>Full Name: <b>[[${#request.userPrincipal.principal.fullName}]]</b></p1><br>
+<div th:text="${#authentication.firstName}" ></div>
 
 
 <div><label for="audio-upload">Upload an audio file:</label></div>

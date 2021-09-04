@@ -3,7 +3,7 @@ package com.music.forum.Models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
 
     @Id
@@ -65,7 +65,7 @@ public class User {
         return tracks;
     }
 
-    public void setTracks(int tracks) {
+    public void setTracks(Integer tracks) {
         this.tracks = tracks;
     }
 }
