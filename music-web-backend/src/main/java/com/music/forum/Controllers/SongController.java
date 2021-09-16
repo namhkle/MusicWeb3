@@ -1,6 +1,5 @@
 package com.music.forum.Controllers;
 
-import com.music.forum.Models.Genre;
 import com.music.forum.Models.Song;
 import com.music.forum.Models.dto.SongDto;
 import com.music.forum.Repositories.GenreDAO;
@@ -10,13 +9,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class SongController {
@@ -44,7 +41,37 @@ public class SongController {
         return new ResponseEntity<SongDto>(returnSong, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value="addsong", method = RequestMethod.GET)
+    public Optional<Song> findForId(Long id) {
+        return songDAO.findById(id);
+    }
+    @PutMapping(value = "/songs/{id}")
+    public ResponseEntity<SongDto> editSong(@PathVariable Long id,
+                                            @RequestBody SongDto songDto) {
+        Optional<Song> song = songDAO.findById(id);
+        Optional<SongDto> returnPost = this.findForId(songDto.getId())
+                .map(p -> {
+
+                    p.setName(songDto.getName());
+                    p.setArtist(songDto.getArtist());
+                    return p;
+                })
+                .map(SongDto::new);
+        return returnPost.map(response -> {
+            return new ResponseEntity<SongDto>(response, HttpStatus.OK);
+        }).orElse(new ResponseEntity(HttpStatus.NOT_FOUND));
+    }
+
+    /*@DeleteMapping(value = "/songs/{id}")
+    public ResponseEntity<Void> deletePost(@PathVariable Long id) {
+        if (id == null) {
+            throw new ApiException("Post id cannot null", HttpStatus.NOT_FOUND);
+        } else {
+            postService.deletePost(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+    }*/
+
+    /*@RequestMapping(value="addsong", method = RequestMethod.GET)
     public String displaySongs(Model model){
         model.addAttribute("songs", songDAO.findAll());
         model.addAttribute("pagetitle","Add Songs");
@@ -86,6 +113,6 @@ public class SongController {
         model.addAttribute("songs", songs);
         model.addAttribute("genres", genreDAO.findAll());
         return "genre";
-    }
+    }*/
 
 }
